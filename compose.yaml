@@ -1,0 +1,21 @@
+version: '2'
+services:
+  insight-app-db: # 서비스이름
+    image: mysql:8.0  # 최신 MySQL 이미지
+    container_name: insight-app   # 컨테이너 이름
+    ports:
+      - "3308:3306"   # 포트 설정  외부:내부
+    environment:
+      MYSQL_ROOT_PASSWORD: 1111   # 패스워드설정
+      MYSQL_DATABASE: insight
+    volumes:
+      - ./mysql/:/var/lib/mysql/
+    command:
+      - --character-set-server=utf8mb4      # UTF-8의 4바이트 문자 지원 (이모지 등 포함)
+      - --collation-server=utf8mb4_unicode_ci  # UTF-8 유니코드 대소문자 구분 없는 정렬 설정
+      - --lower_case_table_names=1  # 테이블 이름을 소문자로 처리하여 대소문자 구분하지 않음
+      - --explicit_defaults_for_timestamp  # TIMESTAMP 필드에 명시적으로 기본값을 지정해야 함
+      - --sql_mode=IGNORE_SPACE  # SQL 모드에서 함수 호출 시 공백을 허용
+      - --max_connections=10000  # 최대 연결 수를 10,000으로 설정 (동시 접속자 수 증가 대응)
+      - --wait_timeout=60000  # 사용자가 비활성 상태일 때 연결이 끊어지는 시간(초)을 60,000초로 설정 (약 16시간)
+      - --max_allowed_packet=200M  # 허용되는 최대 패킷 크기를 200MB로 설정 (대용량 데이터 처리 지원)

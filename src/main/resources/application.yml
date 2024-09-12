@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: insight-app
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  datasource:
+    url: jdbc:mysql://localhost:3308/insight
+    username: root
+    password: 1111
+
+# src/main/resources/application.yml
+openai:
+  api:
+    url:
+    token:
+
+news:
+  api:
+    client:
+    key:
