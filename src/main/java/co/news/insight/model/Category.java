@@ -8,18 +8,17 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
-@Table(name = "articles")
+@Table(name = "category")
 @RequiredArgsConstructor
 @Getter
 @EntityListeners(AuditingEntityListener.class)
-public class Articles {
+public class Category {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,34 +28,11 @@ public class Articles {
   private String title;
 
   @Column
-  private String originalLink;
-
-  @Column
-  private String naverLink;
-
-  @Column
-  private String description;
-
-  @Column
-  private Long categoryId;
-
-  @Column
-  private LocalDateTime pubDate;
+  private int naverCode;
 
   @Column
   @CreatedDate
   private LocalDateTime createDate;
-
-  @Builder
-  public Articles(Long categoryId, String description, Long id, String originalLink, String naverLink, LocalDateTime pubDate, String title) {
-    this.description = description;
-    this.categoryId = categoryId;
-    this.id = id;
-    this.originalLink = originalLink;
-    this.naverLink = naverLink;
-    this.pubDate = pubDate;
-    this.title = title;
-  }
 
 
 }
