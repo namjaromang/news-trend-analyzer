@@ -6,5 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
-  Schedule findByStatus(ScheduleStatus inProgress);
+  Schedule findByStatusAndCategoryTitle(ScheduleStatus inProgress, String categoryTitle);
+
+  Schedule findByCategoryTitle(String categoryTitle);
 }

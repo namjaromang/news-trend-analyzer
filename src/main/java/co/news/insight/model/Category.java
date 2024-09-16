@@ -31,6 +31,9 @@ public class Category {
   private int naverCode;
 
   @Column
+  private int limit;
+
+  @Column
   @CreatedDate
   private LocalDateTime createDate;
 

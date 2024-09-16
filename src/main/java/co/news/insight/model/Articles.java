@@ -29,6 +29,9 @@ public class Articles {
   private String title;
 
   @Column
+  private String publisher;
+
+  @Column
   private String originalLink;
 
   @Column
@@ -48,9 +51,10 @@ public class Articles {
   private LocalDateTime createDate;
 
   @Builder
-  public Articles(Long categoryId, String description, Long id, String originalLink, String naverLink, LocalDateTime pubDate, String title) {
+  public Articles(Long categoryId, String publisher, String description, Long id, String originalLink, String naverLink, LocalDateTime pubDate, String title) {
     this.description = description;
     this.categoryId = categoryId;
+    this.publisher = publisher;
     this.id = id;
     this.originalLink = originalLink;
     this.naverLink = naverLink;

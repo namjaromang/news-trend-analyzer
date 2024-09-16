@@ -17,7 +17,6 @@ public class NewsController {
 
   @GetMapping("/fetch")
   public String fetchNews() {
-    newsService.fetchAndProcessNews(1);
     return "Fetching news data. This process might take some time!";
   }
 

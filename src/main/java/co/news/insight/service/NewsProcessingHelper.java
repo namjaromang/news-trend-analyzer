@@ -32,4 +32,10 @@ public class NewsProcessingHelper {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEE, dd MMM yyyy HH:mm:ss", Locale.ENGLISH);
     return LocalDateTime.parse(cleanDateStr, formatter);
   }
+
+  public LocalDateTime deepParseToLocalDateTime(String dateStr) {
+    DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+    return LocalDateTime.parse(dateStr, formatter);
+  }
+
 }
